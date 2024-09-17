@@ -1,0 +1,7 @@
+mixin filter-status(filterStatus)
+  each item in filterStatus
+    //- ta đã add class vào item trong filterStatus do đó phía dưới có item.class  
+    button(
+      class=`btn btn-sm ml-1 btn-outline-success ${item.class}` 
+      button-status=item.status
+    ) #{item.name}

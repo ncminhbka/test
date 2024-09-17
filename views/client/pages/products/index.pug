@@ -1,0 +1,27 @@
+extends ../../layouts/default.pug
+//- extends là kế thừa cái layout default, chỉ khác phần block. phần được viết sau blockmain dưới đây chèn đúng vào vị trí của
+//- block main trong file default.pug
+include ../../mixins/box-head.pug
+//- bình thường thì include ở chỗ nào thì coi như paste thẳng đoạn code của file include vào file này
+//- nhưng ở đây là mixin. Mixin là một cách mạnh mẽ trong Pug để định nghĩa các khối mã tái sử dụng với tham số
+
+block main
+    .container.my-3 
+        .row 
+            .col-12 
+                +box-head("Danh sách sản phẩm")
+            //- dùng dấu + để gọi mixin và truyền tham số vào
+        
+        .row
+            each item in products
+                .col-4.mb-3
+                    .product-item
+                        .inner-image
+                            img(
+                            src=item.thumbnail
+                            alt = item.title)
+                        .inner-content
+                            h3.innner-title #{item.title}
+                            .inner-price-new #{item.priceNew}$
+                            .innner-price-old #{item.price}$
+                            .inner-discount -#{item.discountPercentage}%
